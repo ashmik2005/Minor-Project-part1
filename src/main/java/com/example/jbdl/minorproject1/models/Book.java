@@ -41,6 +41,7 @@ public class Book { // This class is mapped to a book table using an ORM framewo
 
     @ManyToOne
     @JoinColumn
+    @JsonIgnoreProperties(value = "bookList")
     private Student student;
 
     @CreationTimestamp

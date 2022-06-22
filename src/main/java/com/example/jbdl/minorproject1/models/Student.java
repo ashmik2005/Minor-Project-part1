@@ -1,5 +1,6 @@
 package com.example.jbdl.minorproject1.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -31,6 +32,7 @@ public class Student {
     private String phoneNumber;
 
     @OneToMany(mappedBy = "student")
+    @JsonIgnoreProperties(value = "student")
     // mappedBy is always the current class' reference attribute in the other class
     private List<Book> bookList;
 
