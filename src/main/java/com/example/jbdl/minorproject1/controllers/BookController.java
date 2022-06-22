@@ -17,7 +17,6 @@ public class BookController {
 
     @PostMapping("/book")
     public void createBook(@Valid @RequestBody BookCreateRequest bookCreateRequest){
-        // TODO: We need to write the logic for author insertion
         bookService.insert(bookCreateRequest.to());
     }
 

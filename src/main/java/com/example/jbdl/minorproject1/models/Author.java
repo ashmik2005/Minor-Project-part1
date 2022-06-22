@@ -1,5 +1,6 @@
 package com.example.jbdl.minorproject1.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
@@ -27,6 +28,7 @@ public class Author {
 
     // Back-reference to foreign key author in book table --> Bidirectional JPA relationship
     @OneToMany(mappedBy = "author") // mappedBy --> Tells which attribute this list of books is referring to
+    @JsonIgnoreProperties(value = "author")
     private List<Book> bookList; // This will not be a column in the author table. This is just for java back reference
 
 }
