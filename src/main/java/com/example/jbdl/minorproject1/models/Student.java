@@ -36,6 +36,10 @@ public class Student {
     // mappedBy is always the current class' reference attribute in the other class
     private List<Book> bookList;
 
+    @OneToMany(mappedBy = "student") // back reference
+    @JsonIgnoreProperties(value = "student")
+    private List<Transaction> transactionList;
+
     @CreationTimestamp
     private Date createdOn;
 

@@ -7,6 +7,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -20,7 +21,7 @@ public class Book { // This class is mapped to a book table using an ORM framewo
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    private int cost;
+
 
     @Enumerated(value = EnumType.STRING)
     private Genre genre;
@@ -43,6 +44,11 @@ public class Book { // This class is mapped to a book table using an ORM framewo
     @JoinColumn
     @JsonIgnoreProperties(value = "bookList")
     private Student student;
+
+
+    @OneToMany(mappedBy = "book") // back reference
+    @JsonIgnoreProperties(value = "book")
+    private List<Transaction> transactionList;
 
     @CreationTimestamp
     private Date createdOn;

@@ -20,8 +20,7 @@ public class BookCreateRequest {
     // Book details
     @NotBlank
     private String name;
-    @Positive
-    private int cost;
+
     @NotNull
     private Genre genre;
 
@@ -42,7 +41,6 @@ public class BookCreateRequest {
 
         return Book.builder()
                 .name(this.name)
-                .cost(this.cost)
                 .genre(this.genre)
                 .author(author)
                 .build();
