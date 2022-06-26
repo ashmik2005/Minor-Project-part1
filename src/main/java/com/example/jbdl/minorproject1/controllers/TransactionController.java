@@ -15,6 +15,11 @@ public class TransactionController {
     @PostMapping("/transaction/issue")
     public String issueBook(@RequestParam("bookId") int bookId,
                             @RequestParam("studentId") int studentId) throws Exception {
+        // Student ID must not be accepted as an argument here. Here, any one
+        // can issue a book on any other student's behalf. Then the fine will
+        // be calculated on the wrong student. Thus we need authentication.
+        // We must not accept the studentId as an argument, instead the studentId must be
+        // retrieved from the bookId request itself. Our application needs security
         // book, student
         return transactionService.issueBook(bookId, studentId);
 
