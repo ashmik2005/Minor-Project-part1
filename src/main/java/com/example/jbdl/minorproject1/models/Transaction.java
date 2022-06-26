@@ -32,12 +32,12 @@ public class Transaction {
 
     @ManyToOne
     @JoinColumn
-    @JsonIgnoreProperties(value = "transactionList")
+    @JsonIgnoreProperties(value = {"transactionList", "bookList"})
     private Student student;
 
     @ManyToOne
     @JoinColumn // foreign key
-    @JsonIgnoreProperties(value = "transactionList")
+    @JsonIgnoreProperties(value = {"transactionList", "student"})
     private Book book;
 
     @CreationTimestamp

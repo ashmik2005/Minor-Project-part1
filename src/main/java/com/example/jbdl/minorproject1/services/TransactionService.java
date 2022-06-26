@@ -55,7 +55,7 @@ public class TransactionService {
         }
 
         // Book validations
-        Book book = bookService.getBookById(bookId);
+        Book book = bookService.getBookById(bookId).get(0);
 
         if (book == null) {
             throw new Exception("Book does not exist, hence can't be issued");
@@ -111,7 +111,7 @@ public class TransactionService {
 
         // 1. Fetching book, student
         Student student = studentService.getStudentById(studentId);
-        Book book = bookService.getBookById(bookId);
+        Book book = bookService.getBookById(bookId).get(0);
 
         // Validations
         if (student == null || book == null) {

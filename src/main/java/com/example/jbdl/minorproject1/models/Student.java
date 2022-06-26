@@ -32,12 +32,12 @@ public class Student {
     private String phoneNumber;
 
     @OneToMany(mappedBy = "student")
-    @JsonIgnoreProperties(value = "student")
+    @JsonIgnoreProperties(value = {"student", "transactionList"})
     // mappedBy is always the current class' reference attribute in the other class
     private List<Book> bookList;
 
     @OneToMany(mappedBy = "student") // back reference
-    @JsonIgnoreProperties(value = "student")
+    @JsonIgnoreProperties(value = {"student", "book"})
     private List<Transaction> transactionList;
 
     @CreationTimestamp

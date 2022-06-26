@@ -42,12 +42,12 @@ public class Book { // This class is mapped to a book table using an ORM framewo
 
     @ManyToOne
     @JoinColumn
-    @JsonIgnoreProperties(value = "bookList")
+    @JsonIgnoreProperties(value = {"bookList", "transactionList"})
     private Student student;
 
 
     @OneToMany(mappedBy = "book") // back reference
-    @JsonIgnoreProperties(value = "book")
+    @JsonIgnoreProperties(value = {"book", "student"})
     private List<Transaction> transactionList;
 
     @CreationTimestamp
