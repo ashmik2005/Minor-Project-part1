@@ -20,11 +20,19 @@ public class StudentController {
         studentService.createStudent(studentCreateRequest.to());
     }
 
-    @GetMapping("/student")
-    public Student getStudent(@RequestParam("id") int id) {
+    // Admin scope
+    @GetMapping("/studentById")
+    public Student getStudentById(@RequestParam("id") int id) {
         return studentService.getStudentById(id);
     }
 
+    // Student
+    @GetMapping("/student")
+    public Student getStudent(){
+        return null;
+    }
+
+    // Admin scope
     @GetMapping("/student/all")
     public List<Student> getStudents(){
         return studentService.getAllStudents();

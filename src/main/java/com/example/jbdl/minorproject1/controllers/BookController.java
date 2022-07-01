@@ -14,6 +14,9 @@ import java.util.List;
 @RestController
 public class BookController {
 
+    // All the unsafe HTTP methods (POST, PUT, DELETE) must only be accessible to Admin
+    // get --> Student, Admin
+
     @Autowired
     BookService bookService;
 
