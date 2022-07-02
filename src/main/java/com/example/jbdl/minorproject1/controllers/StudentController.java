@@ -2,8 +2,10 @@ package com.example.jbdl.minorproject1.controllers;
 
 import com.example.jbdl.minorproject1.models.Student;
 import com.example.jbdl.minorproject1.requests.StudentCreateRequest;
+import com.example.jbdl.minorproject1.security.User;
 import com.example.jbdl.minorproject1.services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -29,7 +31,10 @@ public class StudentController {
     // Student
     @GetMapping("/student")
     public Student getStudent(){
-        return null;
+        // Here the details need to be fetched from the authentication context
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Integer studentId = user.getStudent().getId();
+        return studentService.getStudentById(studentId);
     }
 
     // Admin scope

@@ -1,5 +1,6 @@
 package com.example.jbdl.minorproject1.models;
 
+import com.example.jbdl.minorproject1.security.User;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -35,6 +36,11 @@ public class Student {
     @JsonIgnoreProperties(value = {"student", "transactionList"})
     // mappedBy is always the current class' reference attribute in the other class
     private List<Book> bookList;
+
+    @OneToOne
+    @JoinColumn // In Student table, user_id is the foreign key
+    @JsonIgnoreProperties("student")
+    private User user;
 
     @OneToMany(mappedBy = "student") // back reference
     @JsonIgnoreProperties(value = {"student", "book"})

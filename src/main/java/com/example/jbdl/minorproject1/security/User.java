@@ -1,5 +1,8 @@
 package com.example.jbdl.minorproject1.security;
 
+import com.example.jbdl.minorproject1.models.Student;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,6 +12,11 @@ import java.util.Collection;
 import java.util.Collections;
 
 @Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class User implements UserDetails {
 
     @Id
@@ -19,6 +27,10 @@ public class User implements UserDetails {
     private String username;
 
     private String authority;
+
+    @OneToOne(mappedBy = "user")
+    @JsonIgnoreProperties("user")
+    private Student student;
 
     public int getId() {
         return id;
