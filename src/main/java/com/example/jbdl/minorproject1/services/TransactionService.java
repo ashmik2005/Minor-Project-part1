@@ -15,13 +15,13 @@ import java.util.concurrent.TimeUnit;
 public class TransactionService {
 
     @Value("${student.book.quota}")
-    int studentBookQuota;
+    int studentBookQuota = 3;
 
     @Value("${book.return.days}")
-    int bookReturnDays;
+    int bookReturnDays = 15;
 
     @Value("${book.fine.day}")
-    int finePerDay;
+    int finePerDay = 1;
 
     @Autowired
     StudentService studentService;
